@@ -8,10 +8,11 @@ import web
 render = web.template.render('templates/')
 
 urls = [
-    '(.*)', 'cdx',
+    '(.*)/cdx', 'cdx',
+    '(.*)', 'cdx1',
 ]
 
-class cdx(object):
+class cdx1(object):
     def GET(self, name):
         web.header('Content-type', 'text/html; charset=utf-8')
         i = web.input()
@@ -26,7 +27,28 @@ class cdx(object):
 </head>
 
 <body>
-<h1>Привет %s!</h1>
+<h1>Привет, %s!</h1>
+</body>
+</html>
+        ''' % n 
+        return s
+        
+class cdx(object):
+    def GET(self, name):
+        web.header('Content-type', 'text/html; charset=utf-8')
+        i = web.input()
+        if i:
+            n = i.name
+        else:
+            n = u'world'
+        s = u'''
+<html>
+<head>
+
+</head>
+
+<body>
+<h1>Hello, %s!</h1>
 </body>
 </html>
         ''' % n 
