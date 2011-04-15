@@ -1,17 +1,22 @@
-$def with (aDict)
+$def with (name)
 <html>
 <head>
-<title>Страница загрузки</title>
+<title>Авторизация</title>
 </head>
+
 <body>
 <form name="auth" method="get" action="">
-<h1>Привет, $aDict['name']!</h1>
-$aDict['uuid']
+<h1> $name!</h1>
+
+Логин
 <br>
-Выбирете файл для загрузки
+<input type="text" name="name" value="" size="30px" />
 <br>
-<input type="text" name="start" value="" size="50px" />
-<input type="submit" value="Закачать"
+Пароль
+<br>
+<input type="password" name="passw" value="" size="30px" />
+<br>
+<input type="submit" value="Вход"/>
 </form>
 </body>
 </html>

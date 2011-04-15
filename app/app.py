@@ -44,35 +44,12 @@ class cdx1(object):
                 rez = u'Привет, Гость'
         else:
             rez = u'Привет, Гость'
-
-        s = u'''
-<html>
-<head>
-<title>Авторизация</title>
-</head>
-
-<body>
-<form name="auth" method="get" action="">
-<h1> %s!</h1>
-Логин
-<br>
-<input type="text" name="name" value="" size="30px" />
-<br>
-Пароль
-<br>
-<input type="password" name="passw" value="" size="30px" />
-<br>
-<input type="submit" value="Вход"/>
-</form>
-</body>
-</html>
-        ''' % rez
-        return s
+        return render.index(rez)
 
 class cdx(object):
     def GET(self, name):
-        data = web.input()
-        sid = data.get('sid', '')
+        i = web.input()
+        sid = i.get('sid', '')
         con = sqlite3.connect('overhead.sqlite')
         cur = con.cursor()
         sql = u"select * from auth where sesion=?"
@@ -81,9 +58,13 @@ class cdx(object):
         if r:
             rez = r[0][1]
         else:
-            raise web.redirect('/')
+            pass
+            #raise web.redirect('/')
         web.header('Content-type', 'text/html; charset=utf-8')
-        return render.index({'name': rez, 'uuid': sid})
+        out = render.main({'name': rez, 'uuid': sid})
+        #out.uuid
+        return out
+
 
 app = web.application(urls, globals())
 if __name__ == "__main__":
