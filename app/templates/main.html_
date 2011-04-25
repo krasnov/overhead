@@ -1,0 +1,19 @@
+$def with (aDict)
+<html>
+<head>
+<title>Страница загрузки</title>
+</head>
+<body>
+<form name="auth" method="get" action="/cdx">
+<h1>Привет, $aDict['name']!</h1>
+$var uuid: $aDict['uuid']
+<br>
+Выбирете файл для загрузки
+<br>
+<input type="hidden" name="sid" value="$aDict['uuid']" />
+<input type="text" name="start" value="" size="50px" />
+<input type="submit" value="Закачать"/>
+<a href="/exit" title="Выход">Выход</a>
+</form>
+</body>
+</html>

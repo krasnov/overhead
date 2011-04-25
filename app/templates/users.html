@@ -1,0 +1,18 @@
+$def with (aDict)
+<html>
+<head>
+<title>Страница загрузки</title>
+</head>
+<body>
+<form name="auth" method="get" action="/cdx">
+<h1>Привет, $aDict['name']!</h1>
+$var uuid: $aDict['uuid']
+<br>
+Выбирете накладную для загрузки
+<br>
+<input type="hidden" name="sid" value="$aDict['uuid']" />
+
+<a href="/exit" title="Выход">Выход</a>
+</form>
+</body>
+</html>
