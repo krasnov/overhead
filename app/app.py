@@ -81,8 +81,8 @@ class main(object):
             #pass
             raise web.redirect('/')
         web.header('Content-type', 'text/html; charset=utf-8')
-        #out = render.main({'name': rez, 'uuid': sid})
-        out = render.main()
+        out = render.main({'name': rez, 'uuid': sid})
+        #out = render.main()
         #print '1121:', out.uuid
         return out
 

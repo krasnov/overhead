@@ -1,3 +1,4 @@
+$def with (aDict)
 <html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
@@ -8,6 +9,9 @@
 </head>
 <body>
 <div id="file_upload">
+<h1>Привет, $aDict['name']!</h1>
+$var uuid: $aDict['uuid']
+<input type="hidden" name="sid" value="$aDict['uuid']" />
     <form action="upload.py" method="POST" enctype="multipart/form-data">
         <input type="file" name="file[]" multiple>
         <button type="submit">Upload</button>
@@ -42,5 +46,6 @@
 <script src="jquery.fileupload-ui.js"></script>
 <script src="jquery.fileupload-uix.js"></script>
 <script src="application.js"></script>
+<a href="/exit" title="Выход">Выход</a>
 </body> 
 </html>
